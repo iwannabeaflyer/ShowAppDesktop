@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="accesItem" xml:space="preserve">
+    <value>Tot welk item wilt u toegang hebben?</value>
+  </data>
+  <data name="accesOutofRange" xml:space="preserve">
+    <value>Het nummer is buiten het bereik</value>
+  </data>
+  <data name="addComplete" xml:space="preserve">
+    <value>Het toevoegen is voltooid</value>
+  </data>
+  <data name="addNewItem" xml:space="preserve">
+    <value>Een nieuw item toevoegen</value>
+  </data>
+  <data name="assignAlternative" xml:space="preserve">
+    <value>Vul een alternatieve naam in voor de show</value>
+  </data>
+  <data name="assignDescription" xml:space="preserve">
+    <value>Vul een beschrijving in voor de show</value>
+  </data>
+  <data name="assignEnding" xml:space="preserve">
+    <value>Vul in of de show een einde heeft</value>
+  </data>
+  <data name="assignEnglish" xml:space="preserve">
+    <value>Vul de engelse naam in van de show</value>
+  </data>
+  <data name="assignEpisodes" xml:space="preserve">
+    <value>Vul in hoeveel afleveringen de show heeft</value>
+  </data>
+  <data name="assignGenres" xml:space="preserve">
+    <value>Vul in de genres van de show in</value>
+  </data>
+  <data name="assignNotes" xml:space="preserve">
+    <value>Vul enige toegevoegde informatie over de show in</value>
+  </data>
+  <data name="assignRuntime" xml:space="preserve">
+    <value>Vul in hoelang een enkele aflevering is</value>
+  </data>
+  <data name="assignScore" xml:space="preserve">
+    <value>Vul in de score in van de show</value>
+  </data>
+  <data name="assignWatched" xml:space="preserve">
+    <value>Vul in of u al deze show heeft gezien</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Aanpassen</value>
+  </data>
+  <data name="editComplete" xml:space="preserve">
+    <value>Afronden van aanpassen</value>
+  </data>
+  <data name="editField" xml:space="preserve">
+    <value>Welk veld wilt u aanpassen?</value>
+  </data>
+  <data name="editOptions" xml:space="preserve">
+    <value>"alternatief" om het aanpassen van de alternatieve naam
+"engels" om het aanpassen van de engelse naam
+"aflevering" om het aanpassen van de hoeveelheid afleveringen
+"beschrijving" om het aanpassen van de beschrijving
+"genres" om het aanpassen van de genres
+"notities" om het aanpassen van de toegevoede notieties
+"score" om het aanpassen van de score
+"runtime" om het aanpassen van de speeltijd
+"gezien" om het aanpassen of u het al heeft gezien
+"eind" om het aanpassen of het een einde heeft
+"stop" om te stoppen met aanpassen</value>
+    <comment>make sure the words marked by "xy" are the same as their cmdXy counterpart value.
+all commands should be fully lowercase</comment>
+  </data>
+  <data name="find" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="findCancel" xml:space="preserve">
+    <value>Stoppen moet zoeken</value>
+  </data>
+  <data name="findConfirmNo" xml:space="preserve">
+    <value>Bent u zeker dat u wilt zoeken met : nee ?</value>
+  </data>
+  <data name="findConfirmOther" xml:space="preserve">
+    <value>Bent u zeker dat u wilt zoeken met : {0} ?</value>
+    <comment>{0} is the users input</comment>
+  </data>
+  <data name="findConfirmYes" xml:space="preserve">
+    <value>Bent u zeker dat u wilt zoeken met : ja ?</value>
+  </data>
+  <data name="findContinue" xml:space="preserve">
+    <value>Type "j" om verder te gaan</value>
+  </data>
+  <data name="findEnding" xml:space="preserve">
+    <value>Heeft de show een einde?</value>
+  </data>
+  <data name="findField" xml:space="preserve">
+    <value>In welk veld wilt u zoeken?</value>
+  </data>
+  <data name="findNoResult" xml:space="preserve">
+    <value>Er is geen enkele item gevonden in de velden {0} met de woord(en) {1} wilt u met andere woorden gaan zoeken?</value>
+    <comment>{0} is the users input</comment>
+  </data>
+  <data name="findOptions" xml:space="preserve">
+    <value>"alternatief" om te zoeken in de alternatieve naam
+"engels" om te zoeken in de engelse naam
+"genres" om te zoeken in de genres van de show
+"beschrijving" om te zoeken in de beschrijving
+"gezien" om te zoeken in of u het al heeft gezien
+"eind" om te zoeken of het een einde heeft
+"stop" om te stoppen met zoeken</value>
+    <comment>make sure the words marked by "xy" are the same as their cmdXy counterpart value.
+all commands should be fully lowercase</comment>
+  </data>
+  <data name="findOther" xml:space="preserve">
+    <value>Met welke woord(en) wilt u zoeken?</value>
+  </data>
+  <data name="findWatched" xml:space="preserve">
+    <value>Heeft u het gezien?</value>
+  </data>
+  <data name="invalidCommand" xml:space="preserve">
+    <value> is niet een bestaande instructie, wilt u alstublieft een bestaande instructie invoeren</value>
+  </data>
+  <data name="load" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="loadComplete" xml:space="preserve">
+    <value>Klaar met laden</value>
+  </data>
+  <data name="loadFileName" xml:space="preserve">
+    <value>Wat is de naam van het bestand?</value>
+  </data>
+  <data name="mainOptions" xml:space="preserve">
+    <value>"toevoegen" om een nieuw item toe te voegen
+"verwijderen" om een bestaand item te verwijderen
+"zoeken" om te zoeken naar een bestaand item
+"aanpassen" om een bestaand item aan te passen
+"opslaan" om de huidige items op te slaan
+"laden" om items in te laden
+"opties" om de instellingen aan te passen
+"stop" om het programma af te sluiten</value>
+    <comment>make sure the words marked by "xy" are the same as their cmdXy counterpart value.
+all commands should be fully lowercase</comment>
+  </data>
+  <data name="NaN" xml:space="preserve">
+    <value> is niet een geldig nummer, wilt u alstublieft een geldig nummer invoeren</value>
+    <comment>{0} is the users input</comment>
+  </data>
+  <data name="noName" xml:space="preserve">
+    <value>Kan niet een show aanmaken aangezien het geen naam heeft</value>
+  </data>
+  <data name="programEnd" xml:space="preserve">
+    <value>Programma stoppen</value>
+  </data>
+  <data name="programStart" xml:space="preserve">
+    <value>Programma starten</value>
+  </data>
+  <data name="remove" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="removeCancel" xml:space="preserve">
+    <value>Annuleren van verwijderen</value>
+  </data>
+  <data name="removeComplete" xml:space="preserve">
+    <value>Verwijderen voltooid</value>
+  </data>
+  <data name="removeConfirm" xml:space="preserve">
+    <value>Bent u zeker dat u dit wil verwijderen:</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="saveComplete" xml:space="preserve">
+    <value>Opslaan voltooid</value>
+  </data>
+  <data name="saveFileName" xml:space="preserve">
+    <value>Wat zou de naam van het bestand moeten worden?</value>
+  </data>
+  <data name="showAlternative" xml:space="preserve">
+    <value>Alternatieve naam van de show : </value>
+  </data>
+  <data name="showDescription" xml:space="preserve">
+    <value>Beschrijving : </value>
+  </data>
+  <data name="showEnding" xml:space="preserve">
+    <value>Heeft een einde : </value>
+  </data>
+  <data name="showEnglish" xml:space="preserve">
+    <value>Engelse naam van de show : </value>
+  </data>
+  <data name="showEpisodes" xml:space="preserve">
+    <value>Aantal afleveringen : </value>
+  </data>
+  <data name="showGenres" xml:space="preserve">
+    <value>Genres : </value>
+  </data>
+  <data name="showNotes" xml:space="preserve">
+    <value>Toegevoegde notities : </value>
+  </data>
+  <data name="showRuntime" xml:space="preserve">
+    <value>The totale duur is {0}:{1} of {2} minuten per aflevering</value>
+    <comment>{0} for hours, (1} for minutes</comment>
+  </data>
+  <data name="showScore" xml:space="preserve">
+    <value>Score : </value>
+  </data>
+  <data name="showWatched" xml:space="preserve">
+    <value>Gezien : </value>
+  </data>
+  <data name="unsavedChanges" xml:space="preserve">
+    <value>Het bestand is veranderd maar niet opgeslagen, wilt u dit bestand opslaan?</value>
+  </data>
+  <data name="yesNo" xml:space="preserve">
+    <value>Ja / Nee</value>
+  </data>
+  <data name="yesNoOther" xml:space="preserve">
+    <value>Ja / Nee / Anders</value>
+  </data>
+  <data name="languages" xml:space="preserve">
+    <value>1 Engels
+2 Nederlands</value>
+  </data>
+  <data name="settingsLanguage" xml:space="preserve">
+    <value>taal</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="newLanguage" xml:space="preserve">
+    <value>De nieuwe taal van de applicatie is : </value>
+  </data>
+  <data name="cmdAdd" xml:space="preserve">
+    <value>toevoegen</value>
+  </data>
+  <data name="cmdAlternative" xml:space="preserve">
+    <value>alternatief</value>
+  </data>
+  <data name="cmdDescription" xml:space="preserve">
+    <value>beschrijving</value>
+  </data>
+  <data name="cmdEdit" xml:space="preserve">
+    <value>aanpassen</value>
+  </data>
+  <data name="cmdEnding" xml:space="preserve">
+    <value>eind</value>
+  </data>
+  <data name="cmdEnglish" xml:space="preserve">
+    <value>engels</value>
+  </data>
+  <data name="cmdEpisodes" xml:space="preserve">
+    <value>aflevering</value>
+  </data>
+  <data name="cmdExit" xml:space="preserve">
+    <value>stop</value>
+  </data>
+  <data name="cmdFind" xml:space="preserve">
+    <value>zoeken</value>
+  </data>
+  <data name="cmdGenres" xml:space="preserve">
+    <value>genres</value>
+  </data>
+  <data name="cmdLoad" xml:space="preserve">
+    <value>laden</value>
+  </data>
+  <data name="cmdNotes" xml:space="preserve">
+    <value>notities</value>
+  </data>
+  <data name="cmdRemove" xml:space="preserve">
+    <value>verwijderen</value>
+  </data>
+  <data name="cmdRuntime" xml:space="preserve">
+    <value>runtime</value>
+  </data>
+  <data name="cmdSave" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="cmdScore" xml:space="preserve">
+    <value>score</value>
+  </data>
+  <data name="cmdSettings" xml:space="preserve">
+    <value>opties</value>
+  </data>
+  <data name="cmdWatched" xml:space="preserve">
+    <value>gezien</value>
+  </data>
+  <data name="noLong" xml:space="preserve">
+    <value>nee</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="noShort" xml:space="preserve">
+    <value>n</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="otherLong" xml:space="preserve">
+    <value>anders</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="otherShort" xml:space="preserve">
+    <value>a</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="yesLong" xml:space="preserve">
+    <value>ja</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="yesShort" xml:space="preserve">
+    <value>j</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="setLanguage" xml:space="preserve">
+    <value>Welke taal wilt u gebruiken?</value>
+  </data>
+  <data name="setTheme" xml:space="preserve">
+    <value>Welk thema wilt u gebruiken?</value>
+  </data>
+  <data name="settingsTheme" xml:space="preserve">
+    <value>thema</value>
+    <comment>should be fully lowercase</comment>
+  </data>
+  <data name="themes" xml:space="preserve">
+    <value>1 Light
+2 Donker
+3 Matrix</value>
+  </data>
+  <data name="browserConfirm" xml:space="preserve">
+    <value>Wilt u een web browser openen voor meer informatie?</value>
+  </data>
+  <data name="browserInput" xml:space="preserve">
+    <value>Please enter on what website you want to search</value>
+  </data>
+  <data name="browserOpen" xml:space="preserve">
+    <value>Opening a webbrowser</value>
+  </data>
+  <data name="browserOptions" xml:space="preserve">
+    <value>"google" om Google te openen
+"wiki" om Wikipedia te openen
+"imdb" om IMDB te openen
+"mal" om MAL te openen
+"youtube" om Youtube te openen
+"exit" om terug te gaan</value>
+    <comment>make sure the words marked by "x" are the same as their x counterpart value.
+all commands should be fully lowercase</comment>
+  </data>
+  <data name="google" xml:space="preserve">
+    <value>google</value>
+  </data>
+  <data name="imdb" xml:space="preserve">
+    <value>imdb</value>
+    <comment>Internet Movie DataBase</comment>
+  </data>
+  <data name="mal" xml:space="preserve">
+    <value>mal</value>
+    <comment>MyAnimeList</comment>
+  </data>
+  <data name="settingsOptions" xml:space="preserve">
+    <value>"taal" om de taal aan te passen
+"thema" om het thema te veranderen
+"exit" om terug te gaan</value>
+    <comment>all commands should be fully lowercase</comment>
+  </data>
+  <data name="wikipedia" xml:space="preserve">
+    <value>wiki</value>
+  </data>
+  <data name="youtube" xml:space="preserve">
+    <value>youtube</value>
+  </data>
+  <data name="directoryPath" xml:space="preserve">
+    <value>Geef een pad op</value>
+  </data>
+  <data name="loadMode" xml:space="preserve">
+    <value>Wilt u het bestand laden vanaf een gespecificeerd pad?</value>
+  </data>
+  <data name="noValidPath" xml:space="preserve">
+    <value>{0} is niet een geldig pad, de standaard locatie wordt gebruikt</value>
+  </data>
+  <data name="saveMode" xml:space="preserve">
+    <value>Wilt u het bestand opslaan met een gespecificeerd pad?</value>
+  </data>
+  <data name="animelon" xml:space="preserve">
+    <value>animelon</value>
+  </data>
+  <data name="crunchyroll" xml:space="preserve">
+    <value>crunchyroll</value>
+  </data>
+</root>
