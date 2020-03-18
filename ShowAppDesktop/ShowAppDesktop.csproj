@@ -100,6 +100,12 @@
     <Compile Include="ConfirmScreen.Designer.cs">
       <DependentUpon>ConfirmScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditItemScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditItemScreen.Designer.cs">
+      <DependentUpon>EditItemScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FilePathScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,12 @@
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelItem.cs" />
+    <Compile Include="OpenItemScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenItemScreen.Designer.cs">
+      <DependentUpon>OpenItemScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="strings.Designer.cs" />
@@ -123,11 +135,17 @@
     <EmbeddedResource Include="ConfirmScreen.resx">
       <DependentUpon>ConfirmScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditItemScreen.resx">
+      <DependentUpon>EditItemScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FilePathScreen.resx">
       <DependentUpon>FilePathScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenItemScreen.resx">
+      <DependentUpon>OpenItemScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

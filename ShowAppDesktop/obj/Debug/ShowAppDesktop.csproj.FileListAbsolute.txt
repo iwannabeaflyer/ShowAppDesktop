@@ -286,3 +286,5 @@ C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\D
 C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.exe
 C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.pdb
 C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.FilePathScreen.resources
+C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.OpenItemScreen.resources
+C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.EditItemScreen.resources

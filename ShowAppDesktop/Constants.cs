@@ -9,7 +9,8 @@ namespace ShowAppDesktop
 
         public const string APPLICATION_NAME = "json creator";
         public const string OPENFILEFILTER = "Json files (*.json)|*.json";
-        public const string OPENFILEDIR = @"C:\";
+        public const string OPENFILEDIR = @"C:\Users\PATRICK\source\repos\JsonApp\ShowApp\JsonApp\bin\Debug";
+        //@"C:\";
 
         //MAL, animelon uses %20 or white spaces
         //The rest uses '+' to seperate the search terms

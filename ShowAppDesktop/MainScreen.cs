@@ -11,29 +11,44 @@ using System.Text.Json;
 using System.Configuration;
 using System.IO;
 
+/* TODO
+ * Split up Runtime in Total and per episode
+ * Change the OpenItemScreen so it has numerUpDowns
+ * Find a way to easily edit the genres
+ * Remove all translations of in what function you are
+ * Add translations for the new screen interfaces
+ * Add the following methods:
+ * MainAdd()
+ * MainFind()
+ * MainRemove()
+ * MainSave()
+ * MainSettings()
+ * And the rest of the Auxiliary functions
+     */
+
 namespace ShowAppDesktop
 {
     public partial class MainScreen : Form
     {
-        //private MainSingleton main;
+        #region Variables
         private string jsonString = "";
         private string cmd;
         private bool IsChanged = false;
         private JsonObject jsonObject = new JsonObject();
         Configuration config;
+        #endregion
 
+        #region Interface
         public MainScreen()
         {
             InitializeComponent();
             config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             Console.WriteLine(ConfigurationManager.AppSettings.Get("lang"));
             LanguageManager.SetCulture(ConfigurationManager.AppSettings.Get("lang"));
-            //main = new MainSingleton();
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
-            welcomeMessage.Text = LanguageManager.GetTranslation("programStart");
             button_Add.Text = LanguageManager.GetTranslation("cmdAdd");
             button_Remove.Text = LanguageManager.GetTranslation("cmdRemove");
             button_Search.Text = LanguageManager.GetTranslation("cmdFind");
@@ -42,6 +57,7 @@ namespace ShowAppDesktop
             button_Load.Text = LanguageManager.GetTranslation("cmdLoad");
             button_Settings.Text = LanguageManager.GetTranslation("cmdSettings");
             button_Quit.Text = LanguageManager.GetTranslation("cmdExit");
+            //button_Open.Text = LanguageManager.GetTranslation("cmdOpen");
         }
 
         private void button_Add_Click(object sender, EventArgs e)
@@ -89,11 +105,69 @@ namespace ShowAppDesktop
             Application.Exit();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button_Open_Click(object sender, EventArgs e)
         {
-            string curItem = listBox1.SelectedItem.ToString();
-            int index = listBox1.SelectedIndex;
+            ModelItem openItem = jsonObject.Items[listBoxItems.SelectedIndex];
+            OpenItemScreen openItemScreen = new OpenItemScreen(openItem);
+            openItemScreen.ShowDialog();
+        }
+
+        private void button_Edit_Selected_Click(object sender, EventArgs e)
+        {
+            int index = listBoxItems.SelectedIndex;
+            Console.WriteLine(index);
+            ModelItem openItem = jsonObject.Items[index];
+            Console.WriteLine(openItem.ReturnName());
+            EditItemScreen editItemScreen = new EditItemScreen(openItem);
+            DialogResult dialogResult = editItemScreen.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                IsChanged = true;
+                jsonObject.Items[index].EnName = editItemScreen.textBox_EnName.Text;
+                jsonObject.Items[index].AltName = editItemScreen.textBox_AltName.Text;
+                jsonObject.Items[index].Episodes = (ushort)editItemScreen.numericUpDown_Episodes.Value;
+                jsonObject.Items[index].Description = editItemScreen.textBox_Description.Text;
+                jsonObject.Items[index].Score = (byte)editItemScreen.numericUpDown_Score.Value;
+                jsonObject.Items[index].RunTime = (ushort)editItemScreen.numericUpDown_Runtime.Value;
+                jsonObject.Items[index].Notes = editItemScreen.textBox_Notes.Text;
+
+                jsonObject.Items[index].Genres.Clear();
+                foreach (var s in editItemScreen.listBox_Genres.Items)
+                {
+                    jsonObject.Items[index].Genres.Add(FirstToUpper(s.ToString()));
+                }
+                
+                jsonObject.Items[index].Watched = editItemScreen.checkBox_Watched.Checked;
+                jsonObject.Items[index].HasEnd = editItemScreen.checkBox_Ending.Checked;
+            }
+            else if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+
+        private void listBoxItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string curItem = listBoxItems.SelectedItem.ToString();
+            int index = listBoxItems.SelectedIndex;
             Console.WriteLine("Currently {0}, is selected with an index of {1}",curItem, index);
+        }
+        #endregion
+
+        #region MainFunctions
+        private void MainAdd(ref JsonObject jsonObject, ref bool isChanged)
+        {
+
+        }
+
+        private void MainFind(JsonObject jsonObject)
+        {
+
+        }
+
+        private void MainEdit(ref JsonObject jsonObject, ref bool isChanged)
+        {
+
         }
 
         private void MainLoad(ref JsonObject jsonObject, ref string jsonString)
@@ -101,15 +175,31 @@ namespace ShowAppDesktop
             Console.WriteLine(LanguageManager.GetTranslation("load"));
             jsonObject.Items.Clear();
             jsonString = LoadFile();
-            if(!String.IsNullOrEmpty(jsonString))
-                jsonObject = Deserialize(jsonString);
-
-            foreach (ModelItem item in jsonObject.Items)
+            if (!string.IsNullOrEmpty(jsonString))
             {
-                listBox1.Items.Add(item.ReturnName());            }
+                jsonObject = Deserialize(jsonString);
+                listBoxItems.Items.Clear();
+                foreach (ModelItem item in jsonObject.Items)
+                {
+                    listBoxItems.Items.Add(item.ReturnName());
+                }
+            }
+
             Console.WriteLine(LanguageManager.GetTranslation("loadComplete"));
         }
 
+        private void MainSave(ref JsonObject jsonObject, ref bool isChanged, ref string jsonString)
+        {
+
+        }
+
+        private void MainSettings(ref Configuration config)
+        {
+
+        }
+        #endregion
+
+        #region AuxiliaryFunctions
         /// <summary>
         /// Load a specific file into a string using the given fileName, if none is given it will ask for one
         /// </summary>
@@ -118,7 +208,7 @@ namespace ShowAppDesktop
         private string LoadFile()
         {
             StreamReader sr;
-            string path = "";
+            //string path = "";
             //Console.WriteLine(LanguageManager.GetTranslation("loadMode"));
             //DialogResult confirmResult;
             //using (ConfirmScreen confirm = new ConfirmScreen())
@@ -192,5 +282,17 @@ namespace ShowAppDesktop
             }*/
             return ob;
         }
+
+        /// <summary>
+        /// Change a string so the first letter is uppercase
+        /// </summary>
+        /// <param name="s">string to change</param>
+        /// <returns>the given string with the first character as uppercase</returns>
+        private string FirstToUpper(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            return s.First().ToString().ToUpper() + s.Substring(1);
+        }
+        #endregion
     }
 }

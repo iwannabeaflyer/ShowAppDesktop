@@ -28,7 +28,6 @@ namespace ShowAppDesktop
         /// </summary>
         private void InitializeComponent()
         {
-            this.welcomeMessage = new System.Windows.Forms.Label();
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Remove = new System.Windows.Forms.Button();
             this.button_Search = new System.Windows.Forms.Button();
@@ -37,18 +36,10 @@ namespace ShowAppDesktop
             this.button_Load = new System.Windows.Forms.Button();
             this.button_Settings = new System.Windows.Forms.Button();
             this.button_Quit = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxItems = new System.Windows.Forms.ListBox();
+            this.button_Open = new System.Windows.Forms.Button();
+            this.button_Edit_Selected = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // welcomeMessage
-            // 
-            this.welcomeMessage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.welcomeMessage.AutoSize = true;
-            this.welcomeMessage.Location = new System.Drawing.Point(367, 48);
-            this.welcomeMessage.Name = "welcomeMessage";
-            this.welcomeMessage.Size = new System.Drawing.Size(49, 13);
-            this.welcomeMessage.TabIndex = 0;
-            this.welcomeMessage.Text = "welcome";
             // 
             // button_Add
             // 
@@ -130,24 +121,45 @@ namespace ShowAppDesktop
             this.button_Quit.UseVisualStyleBackColor = true;
             this.button_Quit.Click += new System.EventHandler(this.button_Quit_Click);
             // 
-            // listBox1
+            // listBoxItems
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "The Rising of the Shield Hero",
-            "One Punch Man"});
-            this.listBox1.Location = new System.Drawing.Point(610, 27);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(166, 381);
-            this.listBox1.TabIndex = 9;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxItems.FormattingEnabled = true;
+            this.listBoxItems.Location = new System.Drawing.Point(610, 27);
+            this.listBoxItems.Name = "listBoxItems";
+            this.listBoxItems.Size = new System.Drawing.Size(166, 342);
+            this.listBoxItems.TabIndex = 9;
+            this.listBoxItems.SelectedIndexChanged += new System.EventHandler(this.listBoxItems_SelectedIndexChanged);
+            // 
+            // button_Open
+            // 
+            this.button_Open.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Open.Location = new System.Drawing.Point(610, 375);
+            this.button_Open.Name = "button_Open";
+            this.button_Open.Size = new System.Drawing.Size(75, 23);
+            this.button_Open.TabIndex = 10;
+            this.button_Open.Text = "Open";
+            this.button_Open.UseVisualStyleBackColor = true;
+            this.button_Open.Click += new System.EventHandler(this.button_Open_Click);
+            // 
+            // button_Edit_Selected
+            // 
+            this.button_Edit_Selected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Edit_Selected.Location = new System.Drawing.Point(701, 375);
+            this.button_Edit_Selected.Name = "button_Edit_Selected";
+            this.button_Edit_Selected.Size = new System.Drawing.Size(75, 23);
+            this.button_Edit_Selected.TabIndex = 11;
+            this.button_Edit_Selected.Text = "Edit";
+            this.button_Edit_Selected.UseVisualStyleBackColor = true;
+            this.button_Edit_Selected.Click += new System.EventHandler(this.button_Edit_Selected_Click);
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button_Edit_Selected);
+            this.Controls.Add(this.button_Open);
+            this.Controls.Add(this.listBoxItems);
             this.Controls.Add(this.button_Quit);
             this.Controls.Add(this.button_Settings);
             this.Controls.Add(this.button_Load);
@@ -156,19 +168,15 @@ namespace ShowAppDesktop
             this.Controls.Add(this.button_Search);
             this.Controls.Add(this.button_Remove);
             this.Controls.Add(this.button_Add);
-            this.Controls.Add(this.welcomeMessage);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainScreen";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label welcomeMessage;
         private System.Windows.Forms.Button button_Add;
         private System.Windows.Forms.Button button_Remove;
         private System.Windows.Forms.Button button_Search;
@@ -177,6 +185,8 @@ namespace ShowAppDesktop
         private System.Windows.Forms.Button button_Load;
         private System.Windows.Forms.Button button_Settings;
         private System.Windows.Forms.Button button_Quit;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxItems;
+        private System.Windows.Forms.Button button_Open;
+        private System.Windows.Forms.Button button_Edit_Selected;
     }
 }
