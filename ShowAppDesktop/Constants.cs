@@ -8,6 +8,8 @@ namespace ShowAppDesktop
         public const byte MINUTES = 60;
 
         public const string APPLICATION_NAME = "json creator";
+        public const string OPENFILEFILTER = "Json files (*.json)|*.json";
+        public const string OPENFILEDIR = @"C:\";
 
         //MAL, animelon uses %20 or white spaces
         //The rest uses '+' to seperate the search terms

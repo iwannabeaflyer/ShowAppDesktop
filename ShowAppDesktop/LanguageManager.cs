@@ -20,7 +20,7 @@ namespace ShowAppDesktop
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo(specifiedCulture);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(specifiedCulture);
-            resourceManager = new ResourceManager("JsonApp.strings", System.Reflection.Assembly.GetExecutingAssembly());
+            resourceManager = new ResourceManager("ShowAppDesktop.strings", System.Reflection.Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
