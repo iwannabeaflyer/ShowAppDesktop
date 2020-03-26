@@ -32,7 +32,7 @@ namespace ShowAppDesktop
     {
         #region Variables
         private string jsonString = "";
-        private string cmd;
+        //private string cmd;
         private bool IsChanged = false;
         private JsonObject jsonObject = new JsonObject();
         Configuration config;
@@ -43,21 +43,21 @@ namespace ShowAppDesktop
         {
             InitializeComponent();
             config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            Console.WriteLine(ConfigurationManager.AppSettings.Get("lang"));
             LanguageManager.SetCulture(ConfigurationManager.AppSettings.Get("lang"));
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
-            button_Add.Text = LanguageManager.GetTranslation("cmdAdd");
-            button_Remove.Text = LanguageManager.GetTranslation("cmdRemove");
-            button_Search.Text = LanguageManager.GetTranslation("cmdFind");
-            button_Edit.Text = LanguageManager.GetTranslation("cmdEdit");
-            button_Save.Text = LanguageManager.GetTranslation("cmdSave");
-            button_Load.Text = LanguageManager.GetTranslation("cmdLoad");
-            button_Settings.Text = LanguageManager.GetTranslation("cmdSettings");
-            button_Quit.Text = LanguageManager.GetTranslation("cmdExit");
-            //button_Open.Text = LanguageManager.GetTranslation("cmdOpen");
+            button_Add.Text = LanguageManager.GetTranslation("bttnAdd");
+            button_Remove.Text = LanguageManager.GetTranslation("bttnRemove");
+            button_Search.Text = LanguageManager.GetTranslation("bttnFind");
+            button_Edit.Text = LanguageManager.GetTranslation("bttnEdit");
+            button_Save.Text = LanguageManager.GetTranslation("bttnSave");
+            button_Load.Text = LanguageManager.GetTranslation("bttnLoad");
+            button_Settings.Text = LanguageManager.GetTranslation("bttnSettings");
+            button_Quit.Text = LanguageManager.GetTranslation("bttnExit");
+            button_Open.Text = LanguageManager.GetTranslation("bttnOpen");
+            button_Edit_Selected.Text = LanguageManager.GetTranslation("bttnEdit");
         }
 
         private void button_Add_Click(object sender, EventArgs e)
@@ -107,6 +107,8 @@ namespace ShowAppDesktop
 
         private void button_Open_Click(object sender, EventArgs e)
         {
+            if (listBoxItems.SelectedIndex == -1) return;
+
             ModelItem openItem = jsonObject.Items[listBoxItems.SelectedIndex];
             OpenItemScreen openItemScreen = new OpenItemScreen(openItem);
             openItemScreen.ShowDialog();
@@ -115,7 +117,8 @@ namespace ShowAppDesktop
         private void button_Edit_Selected_Click(object sender, EventArgs e)
         {
             int index = listBoxItems.SelectedIndex;
-            Console.WriteLine(index);
+            if (index == -1) return;
+
             ModelItem openItem = jsonObject.Items[index];
             Console.WriteLine(openItem.ReturnName());
             EditItemScreen editItemScreen = new EditItemScreen(openItem);
@@ -128,7 +131,7 @@ namespace ShowAppDesktop
                 jsonObject.Items[index].Episodes = (ushort)editItemScreen.numericUpDown_Episodes.Value;
                 jsonObject.Items[index].Description = editItemScreen.textBox_Description.Text;
                 jsonObject.Items[index].Score = (byte)editItemScreen.numericUpDown_Score.Value;
-                jsonObject.Items[index].RunTime = (ushort)editItemScreen.numericUpDown_Runtime.Value;
+                jsonObject.Items[index].RunTime = (ushort)editItemScreen.numericUpDown_RuntimeEpisode.Value;
                 jsonObject.Items[index].Notes = editItemScreen.textBox_Notes.Text;
 
                 jsonObject.Items[index].Genres.Clear();
@@ -146,12 +149,6 @@ namespace ShowAppDesktop
             }
         }
 
-        private void listBoxItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string curItem = listBoxItems.SelectedItem.ToString();
-            int index = listBoxItems.SelectedIndex;
-            Console.WriteLine("Currently {0}, is selected with an index of {1}",curItem, index);
-        }
         #endregion
 
         #region MainFunctions
@@ -294,5 +291,19 @@ namespace ShowAppDesktop
             return s.First().ToString().ToUpper() + s.Substring(1);
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listBoxItems.SelectedItem != null)
+            {
+                string curItem = listBoxItems.SelectedItem.ToString();
+                int index = listBoxItems.SelectedIndex;
+                Console.WriteLine("Currently {0}, is selected with an index of {1}", curItem, index);
+                //This replaces the old item with a new one in a list
+                //listBoxItems.Items.RemoveAt(index);
+                //listBoxItems.Items.Insert(index, curItem + "*");
+                //listBoxItems.SetSelected(index, true);
+            }
+        }
     }
 }

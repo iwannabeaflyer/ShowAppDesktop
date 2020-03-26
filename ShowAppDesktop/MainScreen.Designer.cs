@@ -124,16 +124,15 @@ namespace ShowAppDesktop
             // listBoxItems
             // 
             this.listBoxItems.FormattingEnabled = true;
-            this.listBoxItems.Location = new System.Drawing.Point(610, 27);
+            this.listBoxItems.Location = new System.Drawing.Point(363, 27);
             this.listBoxItems.Name = "listBoxItems";
             this.listBoxItems.Size = new System.Drawing.Size(166, 342);
             this.listBoxItems.TabIndex = 9;
-            this.listBoxItems.SelectedIndexChanged += new System.EventHandler(this.listBoxItems_SelectedIndexChanged);
             // 
             // button_Open
             // 
             this.button_Open.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Open.Location = new System.Drawing.Point(610, 375);
+            this.button_Open.Location = new System.Drawing.Point(365, 375);
             this.button_Open.Name = "button_Open";
             this.button_Open.Size = new System.Drawing.Size(75, 23);
             this.button_Open.TabIndex = 10;
@@ -144,7 +143,7 @@ namespace ShowAppDesktop
             // button_Edit_Selected
             // 
             this.button_Edit_Selected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Edit_Selected.Location = new System.Drawing.Point(701, 375);
+            this.button_Edit_Selected.Location = new System.Drawing.Point(456, 375);
             this.button_Edit_Selected.Name = "button_Edit_Selected";
             this.button_Edit_Selected.Size = new System.Drawing.Size(75, 23);
             this.button_Edit_Selected.TabIndex = 11;
@@ -156,7 +155,7 @@ namespace ShowAppDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(555, 450);
             this.Controls.Add(this.button_Edit_Selected);
             this.Controls.Add(this.button_Open);
             this.Controls.Add(this.listBoxItems);
