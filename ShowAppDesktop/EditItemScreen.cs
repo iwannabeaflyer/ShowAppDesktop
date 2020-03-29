@@ -84,6 +84,13 @@ namespace ShowAppDesktop
         {
             listBox_Genres.Items.RemoveAt(listBox_Genres.SelectedIndex);
             listBox_Genres.SetSelected(0,false);
+            textBox_Edit.Clear();
+        }
+
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            listBox_Genres.Items.Add(textBox_Edit.Text);
+            textBox_Edit.Clear();
         }
     }
 }

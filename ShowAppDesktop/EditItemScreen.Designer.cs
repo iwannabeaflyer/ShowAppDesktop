@@ -55,6 +55,7 @@ namespace ShowAppDesktop
             this.button_Delete = new System.Windows.Forms.Button();
             this.numericUpDown_RuntimeTotal = new System.Windows.Forms.NumericUpDown();
             this.label_RuntimeTotal = new System.Windows.Forms.Label();
+            this.button_Add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Episodes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Score)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RuntimeEpisode)).BeginInit();
@@ -306,7 +307,7 @@ namespace ShowAppDesktop
             // button_Edit
             // 
             this.button_Edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Edit.Location = new System.Drawing.Point(28, 293);
+            this.button_Edit.Location = new System.Drawing.Point(98, 293);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
             this.button_Edit.TabIndex = 30;
@@ -317,7 +318,7 @@ namespace ShowAppDesktop
             // button_Delete
             // 
             this.button_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Delete.Location = new System.Drawing.Point(118, 293);
+            this.button_Delete.Location = new System.Drawing.Point(182, 293);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(75, 23);
             this.button_Delete.TabIndex = 31;
@@ -349,11 +350,23 @@ namespace ShowAppDesktop
             this.label_RuntimeTotal.Text = "Runtime in total";
             this.label_RuntimeTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // button_Add
+            // 
+            this.button_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Add.Location = new System.Drawing.Point(10, 293);
+            this.button_Add.Name = "button_Add";
+            this.button_Add.Size = new System.Drawing.Size(75, 23);
+            this.button_Add.TabIndex = 34;
+            this.button_Add.Text = "Add";
+            this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
+            // 
             // EditItemScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 445);
+            this.Controls.Add(this.button_Add);
             this.Controls.Add(this.numericUpDown_RuntimeTotal);
             this.Controls.Add(this.label_RuntimeTotal);
             this.Controls.Add(this.button_Delete);
@@ -420,5 +433,6 @@ namespace ShowAppDesktop
         public System.Windows.Forms.Button button_Edit;
         public System.Windows.Forms.Button button_Delete;
         public System.Windows.Forms.Label label_RuntimeTotal;
+        public System.Windows.Forms.Button button_Add;
     }
 }
