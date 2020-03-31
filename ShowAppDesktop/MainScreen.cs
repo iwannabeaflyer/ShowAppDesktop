@@ -58,31 +58,53 @@ namespace ShowAppDesktop
             button_Quit.Text = LanguageManager.GetTranslation("bttnExit");
             button_Open.Text = LanguageManager.GetTranslation("bttnOpen");
             button_Edit_Selected.Text = LanguageManager.GetTranslation("bttnEdit");
+
+            for (int i = 0; i < 100; i++)
+            {
+                listBoxItems.Items.Add("item : " + i);
+            }
         }
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-
+            //Open basicly a copy of the OpenItemScreen but with more instructions
+            //After Saving, add the item to the JsonObject and the listboxItems
         }
 
         private void button_Remove_Click(object sender, EventArgs e)
         {
+            if (listBoxItems.SelectedItems.Count > 1 || listBoxItems.SelectedIndex == -1 || listBoxItems.SelectedIndex > listBoxItems.Items.Count) return;
 
+            listBoxItems.Items.RemoveAt(listBoxItems.SelectedIndex);
+            listBoxItems.ClearSelected();
         }
 
         private void button_Search_Click(object sender, EventArgs e)
         {
-
+            //Open popup to type what you want to search on
+            //This loops through all the items and selects all the items that
+            //contain the given term
+            //Instead of selecting these, adding them to a seperate list to make more
+            //clear what items have been found aswell reduce the list to look through
+            //significantly shorter
+            for (int i = 0; i < listBoxItems.Items.Count; i++)
+            {
+                if(listBoxItems.Items[i].ToString().Contains("5"))
+                {
+                    listBoxItems.SetSelected(i, true);
+                }
+            }
         }
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
-
+            //is this needed or only use the Edit button that already excist?
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-
+            //Save the updated jsonObject
+            MainSave(ref jsonObject, ref IsChanged, ref jsonString);
         }
 
         private void button_Load_Click(object sender, EventArgs e)
@@ -92,7 +114,7 @@ namespace ShowAppDesktop
 
         private void button_Settings_Click(object sender, EventArgs e)
         {
-
+            //Open an settings screen to change language
         }
 
         private void button_Quit_Click(object sender, EventArgs e)
@@ -108,7 +130,7 @@ namespace ShowAppDesktop
         private void button_Open_Click(object sender, EventArgs e)
         {
             if (listBoxItems.SelectedIndex == -1) return;
-
+            if (listBoxItems.SelectedItems.Count > 1) return;
             ModelItem openItem = jsonObject.Items[listBoxItems.SelectedIndex];
             OpenItemScreen openItemScreen = new OpenItemScreen(openItem);
             openItemScreen.ShowDialog();
@@ -187,7 +209,16 @@ namespace ShowAppDesktop
 
         private void MainSave(ref JsonObject jsonObject, ref bool isChanged, ref string jsonString)
         {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = Constants.OPENFILEFILTER;
+            saveFileDialog.Title = "Save an Json File";
+            saveFileDialog.ShowDialog();
 
+            if (saveFileDialog.FileName != "")
+            {
+                File.WriteAllText(saveFileDialog.FileName, jsonString);
+
+            }
         }
 
         private void MainSettings(ref Configuration config)

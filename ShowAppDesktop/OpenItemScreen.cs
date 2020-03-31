@@ -32,11 +32,11 @@ namespace ShowAppDesktop
 
             textBox_EnName.Text = item.EnName;
             textBox_AltName.Text = item.AltName;
-            numericUpDown_Episodes.Value = item.Episodes;
+            textBox_Episodes.Text = item.Episodes.ToString();
             textBox_Description.Text = item.Description;
-            numericUpDown_Score.Value = item.Score;
-            numericUpDown_RuntimeEpisode.Value = item.RunTime / item.Episodes;
-            numericUpDown_RuntimeTotal.Value = item.RunTime;
+            textBox_Score.Text = item.Score.ToString();
+            textBox_RuntimeEpisode.Text = (item.RunTime / item.Episodes).ToString();
+            textBox_RuntimeTotal.Text = item.RunTime.ToString();
             textBox_Notes.Text = item.Notes;
             foreach (string s in item.Genres)
             {

@@ -45,16 +45,12 @@ namespace ShowAppDesktop
             this.checkBox_Ending = new System.Windows.Forms.CheckBox();
             this.label_Ending = new System.Windows.Forms.Label();
             this.button_Close = new System.Windows.Forms.Button();
-            this.numericUpDown_Episodes = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_Score = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_RuntimeEpisode = new System.Windows.Forms.NumericUpDown();
             this.listBox_Genres = new System.Windows.Forms.ListBox();
-            this.numericUpDown_RuntimeTotal = new System.Windows.Forms.NumericUpDown();
             this.label_RuntimeTotal = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Episodes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Score)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RuntimeEpisode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RuntimeTotal)).BeginInit();
+            this.textBox_Episodes = new System.Windows.Forms.TextBox();
+            this.textBox_RuntimeEpisode = new System.Windows.Forms.TextBox();
+            this.textBox_RuntimeTotal = new System.Windows.Forms.TextBox();
+            this.textBox_Score = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label_EnName
@@ -189,6 +185,7 @@ namespace ShowAppDesktop
             // 
             // checkBox_Watched
             // 
+            this.checkBox_Watched.AutoCheck = false;
             this.checkBox_Watched.AutoSize = true;
             this.checkBox_Watched.Location = new System.Drawing.Point(70, 415);
             this.checkBox_Watched.Name = "checkBox_Watched";
@@ -198,6 +195,7 @@ namespace ShowAppDesktop
             // 
             // checkBox_Ending
             // 
+            this.checkBox_Ending.AutoCheck = false;
             this.checkBox_Ending.AutoSize = true;
             this.checkBox_Ending.Location = new System.Drawing.Point(158, 415);
             this.checkBox_Ending.Name = "checkBox_Ending";
@@ -226,50 +224,6 @@ namespace ShowAppDesktop
             this.button_Close.UseVisualStyleBackColor = true;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
-            // numericUpDown_Episodes
-            // 
-            this.numericUpDown_Episodes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown_Episodes.Location = new System.Drawing.Point(165, 336);
-            this.numericUpDown_Episodes.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.numericUpDown_Episodes.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown_Episodes.Name = "numericUpDown_Episodes";
-            this.numericUpDown_Episodes.Size = new System.Drawing.Size(75, 20);
-            this.numericUpDown_Episodes.TabIndex = 24;
-            this.numericUpDown_Episodes.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown_Score
-            // 
-            this.numericUpDown_Score.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown_Score.Location = new System.Drawing.Point(501, 338);
-            this.numericUpDown_Score.Name = "numericUpDown_Score";
-            this.numericUpDown_Score.Size = new System.Drawing.Size(75, 20);
-            this.numericUpDown_Score.TabIndex = 25;
-            // 
-            // numericUpDown_RuntimeEpisode
-            // 
-            this.numericUpDown_RuntimeEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown_RuntimeEpisode.Location = new System.Drawing.Point(165, 375);
-            this.numericUpDown_RuntimeEpisode.Maximum = new decimal(new int[] {
-            65537,
-            0,
-            0,
-            0});
-            this.numericUpDown_RuntimeEpisode.Name = "numericUpDown_RuntimeEpisode";
-            this.numericUpDown_RuntimeEpisode.Size = new System.Drawing.Size(75, 20);
-            this.numericUpDown_RuntimeEpisode.TabIndex = 26;
-            // 
             // listBox_Genres
             // 
             this.listBox_Genres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -278,19 +232,6 @@ namespace ShowAppDesktop
             this.listBox_Genres.Name = "listBox_Genres";
             this.listBox_Genres.Size = new System.Drawing.Size(94, 251);
             this.listBox_Genres.TabIndex = 27;
-            // 
-            // numericUpDown_RuntimeTotal
-            // 
-            this.numericUpDown_RuntimeTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown_RuntimeTotal.Location = new System.Drawing.Point(501, 377);
-            this.numericUpDown_RuntimeTotal.Maximum = new decimal(new int[] {
-            65537,
-            0,
-            0,
-            0});
-            this.numericUpDown_RuntimeTotal.Name = "numericUpDown_RuntimeTotal";
-            this.numericUpDown_RuntimeTotal.Size = new System.Drawing.Size(75, 20);
-            this.numericUpDown_RuntimeTotal.TabIndex = 33;
             // 
             // label_RuntimeTotal
             // 
@@ -303,17 +244,45 @@ namespace ShowAppDesktop
             this.label_RuntimeTotal.Text = "Runtime in total";
             this.label_RuntimeTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // textBox_Episodes
+            // 
+            this.textBox_Episodes.Location = new System.Drawing.Point(164, 335);
+            this.textBox_Episodes.Name = "textBox_Episodes";
+            this.textBox_Episodes.Size = new System.Drawing.Size(75, 20);
+            this.textBox_Episodes.TabIndex = 34;
+            // 
+            // textBox_RuntimeEpisode
+            // 
+            this.textBox_RuntimeEpisode.Location = new System.Drawing.Point(164, 374);
+            this.textBox_RuntimeEpisode.Name = "textBox_RuntimeEpisode";
+            this.textBox_RuntimeEpisode.Size = new System.Drawing.Size(75, 20);
+            this.textBox_RuntimeEpisode.TabIndex = 35;
+            // 
+            // textBox_RuntimeTotal
+            // 
+            this.textBox_RuntimeTotal.Location = new System.Drawing.Point(501, 374);
+            this.textBox_RuntimeTotal.Name = "textBox_RuntimeTotal";
+            this.textBox_RuntimeTotal.Size = new System.Drawing.Size(75, 20);
+            this.textBox_RuntimeTotal.TabIndex = 36;
+            // 
+            // textBox_Score
+            // 
+            this.textBox_Score.Location = new System.Drawing.Point(501, 335);
+            this.textBox_Score.Name = "textBox_Score";
+            this.textBox_Score.Size = new System.Drawing.Size(75, 20);
+            this.textBox_Score.TabIndex = 37;
+            // 
             // OpenItemScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 445);
-            this.Controls.Add(this.numericUpDown_RuntimeTotal);
+            this.Controls.Add(this.textBox_Score);
+            this.Controls.Add(this.textBox_RuntimeTotal);
+            this.Controls.Add(this.textBox_RuntimeEpisode);
+            this.Controls.Add(this.textBox_Episodes);
             this.Controls.Add(this.label_RuntimeTotal);
             this.Controls.Add(this.listBox_Genres);
-            this.Controls.Add(this.numericUpDown_RuntimeEpisode);
-            this.Controls.Add(this.numericUpDown_Score);
-            this.Controls.Add(this.numericUpDown_Episodes);
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.label_Ending);
             this.Controls.Add(this.checkBox_Ending);
@@ -333,10 +302,6 @@ namespace ShowAppDesktop
             this.Controls.Add(this.label_EnName);
             this.Name = "OpenItemScreen";
             this.Text = "OpenItemScreen";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Episodes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Score)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RuntimeEpisode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_RuntimeTotal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,11 +314,7 @@ namespace ShowAppDesktop
         public System.Windows.Forms.CheckBox checkBox_Ending;
         public System.Windows.Forms.TextBox textBox_AltName;
         public System.Windows.Forms.TextBox textBox_Notes;
-        public System.Windows.Forms.NumericUpDown numericUpDown_Episodes;
-        public System.Windows.Forms.NumericUpDown numericUpDown_Score;
-        public System.Windows.Forms.NumericUpDown numericUpDown_RuntimeEpisode;
         public System.Windows.Forms.ListBox listBox_Genres;
-        public System.Windows.Forms.NumericUpDown numericUpDown_RuntimeTotal;
         public System.Windows.Forms.Label label_EnName;
         public System.Windows.Forms.Label label_AltName;
         public System.Windows.Forms.Label label_Episodes;
@@ -366,5 +327,9 @@ namespace ShowAppDesktop
         public System.Windows.Forms.Label label_Ending;
         public System.Windows.Forms.Button button_Close;
         public System.Windows.Forms.Label label_RuntimeTotal;
+        private System.Windows.Forms.TextBox textBox_Episodes;
+        private System.Windows.Forms.TextBox textBox_RuntimeEpisode;
+        private System.Windows.Forms.TextBox textBox_RuntimeTotal;
+        private System.Windows.Forms.TextBox textBox_Score;
     }
 }

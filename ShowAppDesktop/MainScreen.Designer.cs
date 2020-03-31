@@ -126,6 +126,7 @@ namespace ShowAppDesktop
             this.listBoxItems.FormattingEnabled = true;
             this.listBoxItems.Location = new System.Drawing.Point(363, 27);
             this.listBoxItems.Name = "listBoxItems";
+            this.listBoxItems.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxItems.Size = new System.Drawing.Size(166, 342);
             this.listBoxItems.TabIndex = 9;
             // 
