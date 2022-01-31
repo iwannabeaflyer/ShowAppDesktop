@@ -160,6 +160,15 @@ namespace ShowAppDesktop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string bttnSearch {
+            get {
+                return ResourceManager.GetString("bttnSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string bttnSettings {
@@ -259,11 +268,38 @@ namespace ShowAppDesktop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search in list.
+        /// </summary>
+        internal static string lblSearch {
+            get {
+                return ResourceManager.GetString("lblSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Watched.
         /// </summary>
         internal static string lblWatched {
             get {
                 return ResourceManager.GetString("lblWatched", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No results have been found.
+        /// </summary>
+        internal static string messageNoResults {
+            get {
+                return ResourceManager.GetString("messageNoResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select only 1 show.
+        /// </summary>
+        internal static string pickOneItem {
+            get {
+                return ResourceManager.GetString("pickOneItem", resourceCulture);
             }
         }
     }

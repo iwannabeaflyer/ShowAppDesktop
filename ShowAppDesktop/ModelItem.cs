@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ShowAppDesktop
 {
@@ -180,11 +179,16 @@ namespace ShowAppDesktop
             }
             Console.WriteLine("");
             Console.WriteLine(LanguageManager.GetTranslation("showScore") + Score);
-            Console.WriteLine(LanguageManager.GetTranslation("showWatched") + MainSingleton.BoolToAnwser(Watched));
+            Console.WriteLine(LanguageManager.GetTranslation("showWatched") + BoolToAnwser(Watched));
             Console.WriteLine(LanguageManager.GetTranslation("showRuntime"), RunTime / Constants.MINUTES, RunTime % Constants.MINUTES, RunTime / Episodes);
-            Console.WriteLine(LanguageManager.GetTranslation("showEnding") + MainSingleton.BoolToAnwser(HasEnd));
+            Console.WriteLine(LanguageManager.GetTranslation("showEnding") + BoolToAnwser(HasEnd));
             Console.WriteLine(LanguageManager.GetTranslation("showNotes") + Notes);
             Console.WriteLine("");
+        }
+
+        private static string BoolToAnwser(bool b)
+        {   // condition ? true : false
+            return b ? "yes" : "no";
         }
     }
 }

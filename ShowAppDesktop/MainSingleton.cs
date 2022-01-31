@@ -28,7 +28,7 @@ namespace ShowAppDesktop
             string jsonString = "";
             string cmd;
             bool IsChanged = false;
-            JsonObject jsonObject = new JsonObject();
+            //JsonObject jsonObject = new JsonObject();
 
             Console.WriteLine(LanguageManager.GetTranslation("programStart"));
             while (true)
@@ -124,7 +124,7 @@ namespace ShowAppDesktop
             Console.WriteLine(LanguageManager.GetTranslation("load"));
             jsonObject.Items.Clear();
             jsonString = Load();
-            jsonObject = Deserialize(jsonString);
+            //jsonObject = Deserialize(jsonString);
             Console.WriteLine(LanguageManager.GetTranslation("loadComplete"));
         }
 
@@ -208,22 +208,22 @@ namespace ShowAppDesktop
         /// </summary>
         /// <param name="jsonString"></param>
         /// <returns>List of ModelItems made using the json string</returns>
-        private static JsonObject Deserialize(string jsonString)
-        {
-            JsonObject ob = new JsonObject();
-            ob = JsonSerializer.Deserialize<JsonObject>(jsonString);
-            /*            
-            List<ModelItem> result = new List<ModelItem>();
-            split jsonString into modelitems objects
-            jsonString = jsonString.TrimStart('{').TrimEnd('}');
-            string[] temp = jsonString.Split('{', '}');
-            Add the important information to a model
-            for (int i = 1; i < temp.Length; i += 2)
-            {
-                result.Add(new ModelItem(temp[i]));
-            }*/
-            return ob;
-        }
+        //private static JsonObject Deserialize(string jsonString)
+        //{
+        //    JsonObject ob = new JsonObject();
+        //    ob = JsonSerializer.Deserialize<JsonObject>(jsonString);
+        //    /*            
+        //    List<ModelItem> result = new List<ModelItem>();
+        //    split jsonString into modelitems objects
+        //    jsonString = jsonString.TrimStart('{').TrimEnd('}');
+        //    string[] temp = jsonString.Split('{', '}');
+        //    Add the important information to a model
+        //    for (int i = 1; i < temp.Length; i += 2)
+        //    {
+        //        result.Add(new ModelItem(temp[i]));
+        //    }*/
+        //    return ob;
+        //}
 
         /// <summary>
         /// Serialize the JsonObject to a json string

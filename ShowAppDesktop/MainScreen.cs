@@ -24,6 +24,8 @@ using System.IO;
  * MainSave()
  * MainSettings()
  * And the rest of the Auxiliary functions
+ * Look to get raw data from websites to automate filling in or updating items (html agility pack)
+ * Don't look too much to Code Metrics since a good bit of the lower score is the initializing the many input / fields
      */
 
 namespace ShowAppDesktop
@@ -34,7 +36,8 @@ namespace ShowAppDesktop
         private string jsonString = "";
         //private string cmd;
         private bool IsChanged = false;
-        private JsonObject jsonObject = new JsonObject();
+        public JsonObject jsonObject = JsonSingleton.Instance;
+        //private JsonObject jsonObject = new JsonObject();
         Configuration config;
         #endregion
 
@@ -50,8 +53,7 @@ namespace ShowAppDesktop
         {
             button_Add.Text = LanguageManager.GetTranslation("bttnAdd");
             button_Remove.Text = LanguageManager.GetTranslation("bttnRemove");
-            button_Search.Text = LanguageManager.GetTranslation("bttnFind");
-            button_Edit.Text = LanguageManager.GetTranslation("bttnEdit");
+            button_Search.Text = LanguageManager.GetTranslation("bttnSearch");
             button_Save.Text = LanguageManager.GetTranslation("bttnSave");
             button_Load.Text = LanguageManager.GetTranslation("bttnLoad");
             button_Settings.Text = LanguageManager.GetTranslation("bttnSettings");
@@ -59,16 +61,29 @@ namespace ShowAppDesktop
             button_Open.Text = LanguageManager.GetTranslation("bttnOpen");
             button_Edit_Selected.Text = LanguageManager.GetTranslation("bttnEdit");
 
-            for (int i = 0; i < 100; i++)
-            {
-                listBoxItems.Items.Add("item : " + i);
-            }
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    listBoxItems.Items.Add("item : " + i);
+            //}
         }
 
         private void button_Add_Click(object sender, EventArgs e)
         {
             //Open basicly a copy of the OpenItemScreen but with more instructions
             //After Saving, add the item to the JsonObject and the listboxItems
+            AddItemScreen addItemScreen = new AddItemScreen();
+            addItemScreen.ShowDialog();
+
+            if (addItemScreen.DialogResult == DialogResult.OK)
+            {
+                jsonObject.Items.Add(addItemScreen.model);
+                listBoxItems.Items.Add(addItemScreen.model.ReturnName());
+                addItemScreen.Close();
+            }
+            else if (addItemScreen.DialogResult == DialogResult.Cancel)
+            {
+                addItemScreen.Close();
+            }
         }
 
         private void button_Remove_Click(object sender, EventArgs e)
@@ -81,35 +96,46 @@ namespace ShowAppDesktop
 
         private void button_Search_Click(object sender, EventArgs e)
         {
-            //Open popup to type what you want to search on
-            //This loops through all the items and selects all the items that
-            //contain the given term
-            //Instead of selecting these, adding them to a seperate list to make more
-            //clear what items have been found aswell reduce the list to look through
-            //significantly shorter
-            for (int i = 0; i < listBoxItems.Items.Count; i++)
+            FindItemScreen findItemScreen = new FindItemScreen(jsonObject);
+            findItemScreen.ShowDialog();
+
+            if (findItemScreen.DialogResult == DialogResult.Yes)
             {
-                if(listBoxItems.Items[i].ToString().Contains("5"))
+                //Open item
+            }
+            else if (findItemScreen.DialogResult == DialogResult.OK)
+            {
+                //Edit item
+                int index = findItemScreen.listBoxItems.SelectedIndex;
+                if (index == -1) return;
+
+                ModelItem openItem = jsonObject.Items[index];
+                EditItemScreen editItemScreen = new EditItemScreen(openItem);
+                if (editItemScreen.DialogResult == DialogResult.OK)
                 {
-                    listBoxItems.SetSelected(i, true);
+                    ApplyEdit(ref editItemScreen, index);
+                }
+                else if (editItemScreen.DialogResult == DialogResult.Cancel)
+                {
+                    editItemScreen.Close();
                 }
             }
-        }
-
-        private void button_Edit_Click(object sender, EventArgs e)
-        {
-            //is this needed or only use the Edit button that already excist?
+            else if (findItemScreen.DialogResult == DialogResult.Cancel)
+            {
+                findItemScreen.Close();
+            }
+            RepopulateList();
         }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
             //Save the updated jsonObject
-            MainSave(ref jsonObject, ref IsChanged, ref jsonString);
+            MainSave();
         }
 
         private void button_Load_Click(object sender, EventArgs e)
         {
-            MainLoad(ref jsonObject, ref jsonString);
+            MainLoad();
         }
 
         private void button_Settings_Click(object sender, EventArgs e)
@@ -121,7 +147,7 @@ namespace ShowAppDesktop
         {
             if (IsChanged)
             {
-                //Try to save
+                //Open popup to ask if you want to save
             }
 
             Application.Exit();
@@ -142,54 +168,37 @@ namespace ShowAppDesktop
             if (index == -1) return;
 
             ModelItem openItem = jsonObject.Items[index];
-            Console.WriteLine(openItem.ReturnName());
             EditItemScreen editItemScreen = new EditItemScreen(openItem);
             DialogResult dialogResult = editItemScreen.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                IsChanged = true;
-                jsonObject.Items[index].EnName = editItemScreen.textBox_EnName.Text;
-                jsonObject.Items[index].AltName = editItemScreen.textBox_AltName.Text;
-                jsonObject.Items[index].Episodes = (ushort)editItemScreen.numericUpDown_Episodes.Value;
-                jsonObject.Items[index].Description = editItemScreen.textBox_Description.Text;
-                jsonObject.Items[index].Score = (byte)editItemScreen.numericUpDown_Score.Value;
-                jsonObject.Items[index].RunTime = (ushort)editItemScreen.numericUpDown_RuntimeEpisode.Value;
-                jsonObject.Items[index].Notes = editItemScreen.textBox_Notes.Text;
-
-                jsonObject.Items[index].Genres.Clear();
-                foreach (var s in editItemScreen.listBox_Genres.Items)
-                {
-                    jsonObject.Items[index].Genres.Add(FirstToUpper(s.ToString()));
-                }
-                
-                jsonObject.Items[index].Watched = editItemScreen.checkBox_Watched.Checked;
-                jsonObject.Items[index].HasEnd = editItemScreen.checkBox_Ending.Checked;
+                ApplyEdit(ref editItemScreen, index);
             }
             else if (dialogResult == DialogResult.Cancel)
             {
                 return;
             }
+            RepopulateList();
         }
-
         #endregion
 
         #region MainFunctions
-        private void MainAdd(ref JsonObject jsonObject, ref bool isChanged)
+        private void MainAdd()
         {
 
         }
 
-        private void MainFind(JsonObject jsonObject)
+        private void MainFind()
         {
 
         }
 
-        private void MainEdit(ref JsonObject jsonObject, ref bool isChanged)
+        private void MainEdit()
         {
 
         }
 
-        private void MainLoad(ref JsonObject jsonObject, ref string jsonString)
+        private void MainLoad()
         {
             Console.WriteLine(LanguageManager.GetTranslation("load"));
             jsonObject.Items.Clear();
@@ -197,18 +206,25 @@ namespace ShowAppDesktop
             if (!string.IsNullOrEmpty(jsonString))
             {
                 jsonObject = Deserialize(jsonString);
-                listBoxItems.Items.Clear();
-                foreach (ModelItem item in jsonObject.Items)
-                {
-                    listBoxItems.Items.Add(item.ReturnName());
-                }
+                RepopulateList();
             }
 
             Console.WriteLine(LanguageManager.GetTranslation("loadComplete"));
         }
 
-        private void MainSave(ref JsonObject jsonObject, ref bool isChanged, ref string jsonString)
+        private void RepopulateList()
         {
+            listBoxItems.Items.Clear();
+            foreach (ModelItem item in jsonObject.Items)
+            {
+                listBoxItems.Items.Add(item.ReturnName());
+            }
+        }
+
+        private void MainSave()
+        {
+            jsonString = Serialize(jsonObject);
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = Constants.OPENFILEFILTER;
             saveFileDialog.Title = "Save an Json File";
@@ -217,11 +233,11 @@ namespace ShowAppDesktop
             if (saveFileDialog.FileName != "")
             {
                 File.WriteAllText(saveFileDialog.FileName, jsonString);
-
+                IsChanged = false;
             }
         }
 
-        private void MainSettings(ref Configuration config)
+        private void MainSettings()
         {
 
         }
@@ -236,25 +252,6 @@ namespace ShowAppDesktop
         private string LoadFile()
         {
             StreamReader sr;
-            //string path = "";
-            //Console.WriteLine(LanguageManager.GetTranslation("loadMode"));
-            //DialogResult confirmResult;
-            //using (ConfirmScreen confirm = new ConfirmScreen())
-            //{
-            //    confirmResult = confirm.ShowDialog();
-            //    if (confirmResult == DialogResult.Yes)
-            //    {
-            //        Console.WriteLine(LanguageManager.GetTranslation("directoryPath"));
-            //        //TODO: Add a way to enter the new path
-            //        FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            //        if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            //        {
-            //            path = folderBrowserDialog.SelectedPath;
-            //            Console.WriteLine(path);
-            //        }
-            //        //path = Console.ReadLine();
-            //    }
-            //}
 
             Console.WriteLine(LanguageManager.GetTranslation("loadFileName"));
             string fileName = "";
@@ -289,6 +286,12 @@ namespace ShowAppDesktop
             return line;
         }
 
+        private string Serialize(JsonObject jsonObject)
+        {
+            string json = JsonSerializer.Serialize(jsonObject);
+            return json;
+        }
+
         /// <summary>
         /// Deserialize a json string to a list of ModelItems
         /// </summary>
@@ -298,17 +301,28 @@ namespace ShowAppDesktop
         {
             JsonObject ob = new JsonObject();
             ob = JsonSerializer.Deserialize<JsonObject>(jsonString);
-            /*            
-            List<ModelItem> result = new List<ModelItem>();
-            split jsonString into modelitems objects
-            jsonString = jsonString.TrimStart('{').TrimEnd('}');
-            string[] temp = jsonString.Split('{', '}');
-            Add the important information to a model
-            for (int i = 1; i < temp.Length; i += 2)
-            {
-                result.Add(new ModelItem(temp[i]));
-            }*/
             return ob;
+        }
+
+        private void ApplyEdit(ref EditItemScreen editItemScreen, int index)
+        {
+            IsChanged = true;
+            jsonObject.Items[index].EnName = editItemScreen.textBox_EnName.Text;
+            jsonObject.Items[index].AltName = editItemScreen.textBox_AltName.Text;
+            jsonObject.Items[index].Episodes = (ushort)editItemScreen.numericUpDown_Episodes.Value;
+            jsonObject.Items[index].Description = editItemScreen.textBox_Description.Text;
+            jsonObject.Items[index].Score = (byte)editItemScreen.numericUpDown_Score.Value;
+            jsonObject.Items[index].RunTime = (ushort)editItemScreen.numericUpDown_RuntimeEpisode.Value;
+            jsonObject.Items[index].Notes = editItemScreen.textBox_Notes.Text;
+
+            jsonObject.Items[index].Genres.Clear();
+            foreach (var s in editItemScreen.listBox_Genres.Items)
+            {
+                jsonObject.Items[index].Genres.Add(FirstToUpper(s.ToString()));
+            }
+
+            jsonObject.Items[index].Watched = editItemScreen.checkBox_Watched.Checked;
+            jsonObject.Items[index].HasEnd = editItemScreen.checkBox_Ending.Checked;
         }
 
         /// <summary>
@@ -322,19 +336,5 @@ namespace ShowAppDesktop
             return s.First().ToString().ToUpper() + s.Substring(1);
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (listBoxItems.SelectedItem != null)
-            {
-                string curItem = listBoxItems.SelectedItem.ToString();
-                int index = listBoxItems.SelectedIndex;
-                Console.WriteLine("Currently {0}, is selected with an index of {1}", curItem, index);
-                //This replaces the old item with a new one in a list
-                //listBoxItems.Items.RemoveAt(index);
-                //listBoxItems.Items.Insert(index, curItem + "*");
-                //listBoxItems.SetSelected(index, true);
-            }
-        }
     }
 }

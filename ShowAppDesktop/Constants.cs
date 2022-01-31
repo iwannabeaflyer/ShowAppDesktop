@@ -25,5 +25,11 @@ namespace ShowAppDesktop
         public const string IMDB = "https://www.imdb.com/find?q=";
         public const string YOUTUBE = "https://www.youtube.com/results?search_query=";
         public const string WIKIPEDIA = "https://en.wikipedia.org/w/index.php?search=";
+
+
+        //Use HTML Tags to get info from websites to fill data automaticly in
+        //Parser allow you to parse HTML and return an HtmlDocument.
+        //Selector allow you to select HTML node from HtmlDocument.
+        //Traversing allow you to traverse through HTML node.
     }
 }

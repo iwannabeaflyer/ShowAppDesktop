@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+//transform into a singleton, so that every class has acces to this object
 namespace ShowAppDesktop
 {
     public class JsonObject
@@ -8,4 +9,4 @@ namespace ShowAppDesktop
 
         public JsonObject() { Items = new List<ModelItem>(); }
     }
-}
+} 

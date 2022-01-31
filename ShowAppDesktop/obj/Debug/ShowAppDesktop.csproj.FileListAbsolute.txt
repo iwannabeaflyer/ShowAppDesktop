@@ -287,3 +287,5 @@ C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\D
 C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.pdb
 C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.OpenItemScreen.resources
 C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.EditItemScreen.resources
+C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.FindItemScreen.resources
+C:\Users\PATRICK\source\repos\ShowAppDesktop\ShowAppDesktop\ShowAppDesktop\obj\Debug\ShowAppDesktop.AddItemScreen.resources

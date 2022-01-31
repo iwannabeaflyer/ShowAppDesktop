@@ -1,11 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShowAppDesktop
@@ -15,7 +8,12 @@ namespace ShowAppDesktop
         public OpenItemScreen(ModelItem item)
         {
             InitializeComponent();
+            UpdateTranslations();
+            PopulateInputs(item);
+        }
 
+        private void UpdateTranslations()
+        {
             label_EnName.Text = LanguageManager.GetTranslation("lblEnglish");
             label_AltName.Text = LanguageManager.GetTranslation("lblAlternative");
             label_Episodes.Text = LanguageManager.GetTranslation("lblEpisodes");
@@ -29,7 +27,10 @@ namespace ShowAppDesktop
             label_Notes.Text = LanguageManager.GetTranslation("lblNotes");
 
             button_Close.Text = LanguageManager.GetTranslation("bttnClose");
+        }
 
+        private void PopulateInputs(ModelItem item)
+        {
             textBox_EnName.Text = item.EnName;
             textBox_AltName.Text = item.AltName;
             textBox_Episodes.Text = item.Episodes.ToString();
