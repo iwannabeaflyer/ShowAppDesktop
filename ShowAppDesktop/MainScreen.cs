@@ -61,10 +61,16 @@ namespace ShowAppDesktop
             button_Open.Text = LanguageManager.GetTranslation("bttnOpen");
             button_Edit_Selected.Text = LanguageManager.GetTranslation("bttnEdit");
 
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    listBoxItems.Items.Add("item : " + i);
-            //}
+            //REMOVE ONCE DONE TESTING LOADING, SAVING, OPENING, EDITTING
+            jsonObject.Items.Clear();
+            jsonString = new StreamReader(Constants.TEMPJSONFILE).ReadToEnd();
+
+
+            if (!string.IsNullOrEmpty(jsonString))
+            {
+                jsonObject = Deserialize(jsonString);
+                RepopulateList();
+            }
         }
 
         private void button_Add_Click(object sender, EventArgs e)
@@ -96,35 +102,13 @@ namespace ShowAppDesktop
 
         private void button_Search_Click(object sender, EventArgs e)
         {
-            FindItemScreen findItemScreen = new FindItemScreen(jsonObject);
+            FindItemScreen findItemScreen = new FindItemScreen(this, jsonObject);
             findItemScreen.ShowDialog();
 
-            if (findItemScreen.DialogResult == DialogResult.Yes)
+            if (findItemScreen.DialogResult == DialogResult.OK)
             {
-                //Open item
+                RepopulateList();
             }
-            else if (findItemScreen.DialogResult == DialogResult.OK)
-            {
-                //Edit item
-                int index = findItemScreen.listBoxItems.SelectedIndex;
-                if (index == -1) return;
-
-                ModelItem openItem = jsonObject.Items[index];
-                EditItemScreen editItemScreen = new EditItemScreen(openItem);
-                if (editItemScreen.DialogResult == DialogResult.OK)
-                {
-                    ApplyEdit(ref editItemScreen, index);
-                }
-                else if (editItemScreen.DialogResult == DialogResult.Cancel)
-                {
-                    editItemScreen.Close();
-                }
-            }
-            else if (findItemScreen.DialogResult == DialogResult.Cancel)
-            {
-                findItemScreen.Close();
-            }
-            RepopulateList();
         }
 
         private void button_Save_Click(object sender, EventArgs e)
@@ -148,6 +132,8 @@ namespace ShowAppDesktop
             if (IsChanged)
             {
                 //Open popup to ask if you want to save
+                DialogResult result = MessageBox.Show("There are currently unsaved changes, do you want to continue?", "Unsaved changes", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No) return;
             }
 
             Application.Exit();
@@ -271,6 +257,7 @@ namespace ShowAppDesktop
                 }
             }
             string line = "";
+            Console.WriteLine(fileName);
             try
             {
                 using (sr = new StreamReader(fileName))
@@ -304,7 +291,7 @@ namespace ShowAppDesktop
             return ob;
         }
 
-        private void ApplyEdit(ref EditItemScreen editItemScreen, int index)
+        public void ApplyEdit(ref EditItemScreen editItemScreen, int index)
         {
             IsChanged = true;
             jsonObject.Items[index].EnName = editItemScreen.textBox_EnName.Text;

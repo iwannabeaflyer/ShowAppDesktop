@@ -69,6 +69,7 @@ namespace ShowAppDesktop
             this.textBox_EnName.Location = new System.Drawing.Point(99, 12);
             this.textBox_EnName.Multiline = true;
             this.textBox_EnName.Name = "textBox_EnName";
+            this.textBox_EnName.ReadOnly = true;
             this.textBox_EnName.Size = new System.Drawing.Size(477, 20);
             this.textBox_EnName.TabIndex = 3;
             // 
@@ -78,6 +79,7 @@ namespace ShowAppDesktop
             this.textBox_AltName.Location = new System.Drawing.Point(99, 38);
             this.textBox_AltName.Multiline = true;
             this.textBox_AltName.Name = "textBox_AltName";
+            this.textBox_AltName.ReadOnly = true;
             this.textBox_AltName.Size = new System.Drawing.Size(477, 20);
             this.textBox_AltName.TabIndex = 5;
             // 
@@ -108,6 +110,7 @@ namespace ShowAppDesktop
             this.textBox_Description.Location = new System.Drawing.Point(311, 64);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
+            this.textBox_Description.ReadOnly = true;
             this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Description.Size = new System.Drawing.Size(265, 252);
             this.textBox_Description.TabIndex = 9;
@@ -159,6 +162,7 @@ namespace ShowAppDesktop
             this.textBox_Notes.Location = new System.Drawing.Point(245, 410);
             this.textBox_Notes.Multiline = true;
             this.textBox_Notes.Name = "textBox_Notes";
+            this.textBox_Notes.ReadOnly = true;
             this.textBox_Notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Notes.Size = new System.Drawing.Size(236, 20);
             this.textBox_Notes.TabIndex = 17;
@@ -187,6 +191,7 @@ namespace ShowAppDesktop
             // 
             this.checkBox_Watched.AutoCheck = false;
             this.checkBox_Watched.AutoSize = true;
+            this.checkBox_Watched.Enabled = false;
             this.checkBox_Watched.Location = new System.Drawing.Point(70, 415);
             this.checkBox_Watched.Name = "checkBox_Watched";
             this.checkBox_Watched.Size = new System.Drawing.Size(15, 14);
@@ -197,6 +202,7 @@ namespace ShowAppDesktop
             // 
             this.checkBox_Ending.AutoCheck = false;
             this.checkBox_Ending.AutoSize = true;
+            this.checkBox_Ending.Enabled = false;
             this.checkBox_Ending.Location = new System.Drawing.Point(158, 415);
             this.checkBox_Ending.Name = "checkBox_Ending";
             this.checkBox_Ending.Size = new System.Drawing.Size(15, 14);
@@ -227,10 +233,12 @@ namespace ShowAppDesktop
             // listBox_Genres
             // 
             this.listBox_Genres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox_Genres.Enabled = false;
             this.listBox_Genres.FormattingEnabled = true;
             this.listBox_Genres.Location = new System.Drawing.Point(99, 64);
             this.listBox_Genres.Name = "listBox_Genres";
             this.listBox_Genres.Size = new System.Drawing.Size(94, 251);
+            this.listBox_Genres.Sorted = true;
             this.listBox_Genres.TabIndex = 27;
             // 
             // label_RuntimeTotal
@@ -248,6 +256,7 @@ namespace ShowAppDesktop
             // 
             this.textBox_Episodes.Location = new System.Drawing.Point(164, 335);
             this.textBox_Episodes.Name = "textBox_Episodes";
+            this.textBox_Episodes.ReadOnly = true;
             this.textBox_Episodes.Size = new System.Drawing.Size(75, 20);
             this.textBox_Episodes.TabIndex = 34;
             // 
@@ -255,6 +264,7 @@ namespace ShowAppDesktop
             // 
             this.textBox_RuntimeEpisode.Location = new System.Drawing.Point(164, 374);
             this.textBox_RuntimeEpisode.Name = "textBox_RuntimeEpisode";
+            this.textBox_RuntimeEpisode.ReadOnly = true;
             this.textBox_RuntimeEpisode.Size = new System.Drawing.Size(75, 20);
             this.textBox_RuntimeEpisode.TabIndex = 35;
             // 
@@ -262,6 +272,7 @@ namespace ShowAppDesktop
             // 
             this.textBox_RuntimeTotal.Location = new System.Drawing.Point(501, 374);
             this.textBox_RuntimeTotal.Name = "textBox_RuntimeTotal";
+            this.textBox_RuntimeTotal.ReadOnly = true;
             this.textBox_RuntimeTotal.Size = new System.Drawing.Size(75, 20);
             this.textBox_RuntimeTotal.TabIndex = 36;
             // 
@@ -269,6 +280,7 @@ namespace ShowAppDesktop
             // 
             this.textBox_Score.Location = new System.Drawing.Point(501, 335);
             this.textBox_Score.Name = "textBox_Score";
+            this.textBox_Score.ReadOnly = true;
             this.textBox_Score.Size = new System.Drawing.Size(75, 20);
             this.textBox_Score.TabIndex = 37;
             // 

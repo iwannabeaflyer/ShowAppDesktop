@@ -293,6 +293,7 @@ namespace ShowAppDesktop
             this.listBox_Genres.Location = new System.Drawing.Point(99, 64);
             this.listBox_Genres.Name = "listBox_Genres";
             this.listBox_Genres.Size = new System.Drawing.Size(94, 186);
+            this.listBox_Genres.Sorted = true;
             this.listBox_Genres.TabIndex = 27;
             this.listBox_Genres.SelectedIndexChanged += new System.EventHandler(this.listBox_Genres_SelectedIndexChanged);
             // 

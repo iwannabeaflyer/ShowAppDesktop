@@ -14,10 +14,12 @@ namespace ShowAppDesktop
     {
         public JsonObject jObject;
         private List<ModelItem> results = new List<ModelItem>();
-        public FindItemScreen(JsonObject jsonObject)
+        private MainScreen mainScreen;
+        public FindItemScreen(MainScreen main, JsonObject jsonObject)
         {
             InitializeComponent();
             jObject = jsonObject;
+            mainScreen = main;
 
             Console.WriteLine("Populating Find List");
             foreach (ModelItem item in jObject.Items)
@@ -88,39 +90,41 @@ namespace ShowAppDesktop
         {
             if (listBoxItems.SelectedItems.Count != 1)
             {
-                //Add notification about selecting only 1 item
                 MessageBox.Show(LanguageManager.GetTranslation("pickOneItem"));
                 return;
             }
-
+            OpenItemScreen openItemScreen = new OpenItemScreen(jObject.Items[listBoxItems.SelectedIndex]);
+            openItemScreen.ShowDialog();
+            
             this.DialogResult = DialogResult.Yes;
-            ////Get selected item from the listbox
-            //int i = listBoxItems.SelectedIndex;
-            ////Open it
-            //OpenItemScreen openItem = new OpenItemScreen(results[i]);
-            //openItem.ShowDialog();
-            Console.WriteLine("Not Implemented");
         }
 
         private void button_Edit_Click(object sender, EventArgs e)
         {
             if (listBoxItems.SelectedItems.Count != 1)
             {
-                //Add notification about selecting only 1 item
                 MessageBox.Show(LanguageManager.GetTranslation("pickOneItem"));
                 return;
             }
+            int index = listBoxItems.SelectedIndex;
 
-            //Find the equal of the selected item in the jsobobject
-            //Open a EditItemScreen
+            EditItemScreen editItemScreen = new EditItemScreen(jObject.Items[index]);
+            editItemScreen.ShowDialog();
 
-            this.DialogResult = DialogResult.OK;
-            Console.WriteLine("Not Implemented");
+            if (editItemScreen.DialogResult == DialogResult.OK)
+            {
+                mainScreen.ApplyEdit(ref editItemScreen, index);
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
 
         private void button_Close_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private List<ModelItem> FindMatch(int index, string s)
