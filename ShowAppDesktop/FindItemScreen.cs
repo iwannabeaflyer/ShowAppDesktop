@@ -53,15 +53,24 @@ namespace ShowAppDesktop
                 return;
             }
 
-            //This code only selects all items that match
+            //Select all items that match
             listBoxItems.SelectedItems.Clear();
-            for (int i = 0; i < listBoxItems.Items.Count; i++)
+            //for (int i = 0; i < listBoxItems.Items.Count; i++)
+            //{
+            //    if (listBoxItems.Items[i].ToString().ToLower().Replace(" ", "").Contains(searchTextBox.Text.ToLower()))
+            //    {
+            //        listBoxItems.SetSelected(i, true);
+            //    }
+            //}
+
+            List<ModelItem> temp = new List<ModelItem>();
+            temp = FindMatch(comboBox1.SelectedIndex, searchTextBox.Text.ToLower());
+
+            foreach (ModelItem item in temp)
             {
-                if (listBoxItems.Items[i].ToString().ToLower().Replace(" ", "").Contains(searchTextBox.Text.ToLower()))
-                {
-                    listBoxItems.SetSelected(i, true);
-                }
+                listBoxItems.Items.Add(item.ReturnName());
             }
+
             if(listBoxItems.SelectedItems.Count == 0)
             {
                 MessageBox.Show(LanguageManager.GetTranslation("messageNoResults"));

@@ -134,6 +134,9 @@ namespace ShowAppDesktop
                 //Open popup to ask if you want to save
                 DialogResult result = MessageBox.Show("There are currently unsaved changes, do you want to continue?", "Unsaved changes", MessageBoxButtons.YesNo);
                 if (result == DialogResult.No) return;
+
+                //initate saving
+                MainSave();
             }
 
             Application.Exit();
@@ -141,11 +144,13 @@ namespace ShowAppDesktop
 
         private void button_Open_Click(object sender, EventArgs e)
         {
-            if (listBoxItems.SelectedIndex == -1) return;
-            if (listBoxItems.SelectedItems.Count > 1) return;
+            if (listBoxItems.SelectedIndex == -1 || listBoxItems.SelectedItems.Count > 1) return;
             ModelItem openItem = jsonObject.Items[listBoxItems.SelectedIndex];
             OpenItemScreen openItemScreen = new OpenItemScreen(openItem);
             openItemScreen.ShowDialog();
+
+            //ListViewItem temp = listBoxItems.SelectedItem;
+
         }
 
         private void button_Edit_Selected_Click(object sender, EventArgs e)
@@ -203,6 +208,11 @@ namespace ShowAppDesktop
             listBoxItems.Items.Clear();
             foreach (ModelItem item in jsonObject.Items)
             {
+                //ListViewItem listViewItem = new ListViewItem();
+                //listViewItem.Name = item.ReturnName();
+                //listViewItem.Tag = item;
+
+                //listBoxItems.Items.Add(listViewItem);
                 listBoxItems.Items.Add(item.ReturnName());
             }
         }
@@ -323,5 +333,10 @@ namespace ShowAppDesktop
             return s.First().ToString().ToUpper() + s.Substring(1);
         }
         #endregion
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

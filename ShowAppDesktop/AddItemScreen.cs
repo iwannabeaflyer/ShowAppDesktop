@@ -38,7 +38,8 @@ namespace ShowAppDesktop
         }
 
         private void button_Add_Click(object sender, EventArgs e)
-        {
+        { 
+            if (textBox_Edit.Text.Length == 0) return;
             listBox_Genres.Items.Add(char.ToUpper(textBox_Edit.Text[0]) + textBox_Edit.Text.Substring(1).ToLower());
             textBox_Edit.Clear();
         }
